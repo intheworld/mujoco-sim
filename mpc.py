@@ -32,7 +32,7 @@ class PbvsMPC:
 
         cpin.framesForwardKinematics(self.cmodel, self.cdata, self.q_sym)
 
-                # 位置误差函数
+        # 位置误差函数
         self.translational_error = ca.Function(
             "translational_error",
             [self.q_sym, self.ref_tf_sym],
