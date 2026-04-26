@@ -84,14 +84,14 @@ class PandaEnv(mujoco_viewer.CustomViewer):
                 self.ik_stop = True
             if not self.ik_stop:
                 self.last_dof = self.dof
-                self.data.qpos[:7] = self.dof[:7]
+                self.data.ctrl[:7] = self.dof[:7]
                 self.plot_manager.updateDataToPlotter("vel.x", "now_ee_vel.x", self.now_ee_vel[0])
                 self.plot_manager.updateDataToPlotter("vel.x", "now_ee_velfilter.x", self.now_ee_vel_filter[0])
                 self.plot_manager.updateDataToPlotter("delta.x", "delta.x", self.desired_pos[0])
                 self.plot_manager.updateDataToPlotter("delta.y", "delta.y", self.desired_pos[1])
                 self.plot_manager.updateDataToPlotter("delta.z", "delta.z", self.desired_pos[2])
             else:
-                self.data.qpos[:7] = self.last_dof[:7]
+                self.data.ctrl[:7] = self.last_dof[:7]
 
 if __name__ == "__main__":
     SCENE_XML = "model/franka_emika_panda/scene_pos.xml"
